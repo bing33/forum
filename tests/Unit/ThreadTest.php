@@ -13,15 +13,15 @@ class ThreadTest extends TestCase {
     public function setUp(){
         parent::setUp();
 
-        $this->thread = factory( 'App\Thread' )->create();
-    }
-
-    public function test_a_thread_has_replies(){
-        $this->assertInstanceOf( 'Illuminate\Database\Eloquent\Collection', $this->thread->replies );
+        $this->thread = create( 'App\Thread' );
     }
 
     public function test_a_thread_has_a_creator(){
         $this->assertInstanceOf( 'App\User', $this->thread->creator );
+    }
+
+    public function test_a_thread_has_replies(){
+        $this->assertInstanceOf( 'Illuminate\Database\Eloquent\Collection', $this->thread->replies );
     }
 
     public function test_a_thread_can_add_a_reply(){
@@ -31,5 +31,9 @@ class ThreadTest extends TestCase {
         ]);
 
         $this->assertCount(1, $this->thread->replies);
+    }
+
+    public function test_a_thread_belongs_to_a_channel(){
+        
     }
 }
