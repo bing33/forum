@@ -4,22 +4,20 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRepliesTable extends Migration
-{
+class CreateRepliesTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('replies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('thread_id');
-            $table->integer('user_id');
-            $table->text('body');
+    public function up(){
+        Schema::create( 'replies', function ( Blueprint $table ){
+            $table->increments( 'id' );
+            $table->unsignedInteger( 'thread_id' );
+            $table->unsignedInteger( 'user_id' );
+            $table->text( 'body' );
             $table->timestamps();
-        });
+        } );
     }
 
     /**
@@ -27,8 +25,7 @@ class CreateRepliesTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('replies');
+    public function down(){
+        Schema::dropIfExists( 'replies' );
     }
 }
